@@ -3,8 +3,8 @@
 //session_destroy();
 //defining
 require_once __DIR__ . '/vendor/autoload.php';
-const CLIENT_ID = '748294224449-s1aqkfmo4m02hs5hop4lpe6f857ssamu.apps.googleusercontent.com';
-const CLIENT_SECRET = 'thsAnmIlVyFOK7v4BAg01_9P';
+const CLIENT_ID = '';
+const CLIENT_SECRET = '';
 const REDIRECT_URI = 'http://localhost/rana/done.php';
 
 session_start();
