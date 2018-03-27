@@ -41,4 +41,7 @@ $nonXmlData = Array
 $xmlDoc->formatOutput = true; 
 
 $xmlFormattedData = $xmlDoc->saveXML();
+
+//to remove xml version tag from xml
+//$xmlFormattedData = $xmlDoc->saveXML($xmlDoc->documentElement);
  echo $xmlFormattedData;
