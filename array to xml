@@ -1,1 +1,44 @@
+//https://www.itsalif.info/content/php-5-domdocument-creating-basic-xml
+//https://www.codexworld.com/convert-multidimensional-associative-array-to-xml-php/
 
+//create xml from array
+$nonXmlData = Array
+(
+    "manufacturer" => "Samsung",
+    "model" => "XL30",
+    "display" => Array
+        (
+            "screen_size" => 30,
+            "resolution" => "2560x1600",
+            "brightness" => 200,
+            "contrast_ratio" => "1000:1",
+            "response_time" => 6,
+            "viewing_angle_h" => 178,
+            "viewing_angle_v" => 178,
+            "colour_supported" => 16.7,
+            "colour_supported_metric" => "M"
+        )
+
+);
+
+//create the xml document
+ $xmlDoc = new \DOMDocument();
+
+ $xmlDoc->version  = "1.0";
+ $xmlDoc->encoding = "ISO-8859-1";
+
+ $root = $xmlDoc->appendChild($xmlDoc->createElement("monitor"));
+
+ $root->appendChild($xmlDoc->createElement('manufacturer', $nonXmlData['manufacturer']));
+ $root->appendChild($xmlDoc->createElement('model', $nonXmlData['model']));
+ $display = $root->appendChild($xmlDoc->createElement('display'));
+
+ foreach($nonXmlData['display'] as $key => $value)
+ {
+ 	$display->appendChild($xmlDoc->createElement($key, $value));
+ }
+
+$xmlDoc->formatOutput = true; 
+
+$xmlFormattedData = $xmlDoc->saveXML();
+ echo $xmlFormattedData;
